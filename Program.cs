@@ -6,29 +6,21 @@ namespace Fyzika
     {
         static void Main(string[] args)
         {
-            int jadra = 200; //začínáme s dvěstě jádry
-            
-            while(jadra > 0) //dokud zbývá alespoň jedno jádro, "házíme" znovu
-            {
-                jadra = Cycle(jadra);
-            }
-            Console.Read();
-            
-        }
-        static int Cycle(int _jadra)
-        {
+            int jadra = 1000;           //začínáme s tisíci jádry
             Random rnd = new Random(); //náhodné číslo
             int j;
 
-            for (int i = 0; i < _jadra; i++)
+            while (jadra > 0) //dokud zbývá alespoň jedno jádro, "házíme" znovu
             {
-                j = rnd.Next(1, 10); //náhodné číslo z <1, 10>
-                if (j < 6) //pokud je číslo menší než 6, pak se jádro přeměnilo
-                    _jadra--; //počet nepřeměněných jader se sníží o jedno
+                for (int i = 0; i < jadra; i++)
+                {
+                    j = rnd.Next(1, 10); //náhodné číslo z <1, 10>
+                    if (j < 6)           //pokud je číslo menší než 6, pak se jádro přeměnilo
+                        jadra--;         //počet nepřeměněných jader se sníží o jedno
+                }
+                Console.WriteLine("Zbývající jádra: " + jadra);
             }
-            Console.WriteLine("Zbývající jádra: " + _jadra);
-
-            return _jadra;
+            Console.Read();
         }
     }
 }
